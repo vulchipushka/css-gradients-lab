@@ -1,0 +1,117 @@
+:root {
+  --btn-gradient-default: linear-gradient(135deg, hsl(210 85% 55%) 0%, hsl(260 85% 55%) 100%);
+  --btn-gradient-hover: linear-gradient(315deg, hsl(260 85% 55%) 0%, hsl(210 85% 55%) 100%);
+  --gradient-primary: linear-gradient(135deg, hsl(210 85% 55%), hsl(260 85% 55%));
+  --gradient-accent: radial-gradient(ellipse at bottom right, hsl(280 70% 60%), hsl(220 50% 20%));
+  --gradient-overlay: linear-gradient(to bottom, hsl(0 0% 0% / 0.5), hsl(0 0% 0% / 0));
+  --bg-color: #f4f7f6;
+  --text-color: #333;
+}
+
+.theme-dark {
+  --gradient-primary: linear-gradient(135deg, hsl(210 60% 35%), hsl(260 60% 35%));
+  --gradient-accent: radial-gradient(ellipse at bottom right, hsl(280 50% 40%), hsl(220 40% 10%));
+  --bg-color: #1a1a1a;
+  --text-color: #f4f7f6;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 2rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Шаг 1. Кнопка */
+.button {
+  padding-block: 0.75rem;
+  padding-inline: 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: hsl(0 0% 100%);
+  font-size: 1rem;
+  cursor: pointer;
+  background: var(--btn-gradient-default);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.button:hover {
+  background: var(--btn-gradient-hover);
+  transform: scale(1.03);
+}
+.button:focus-visible {
+  outline: 2px solid hsl(210 85% 55%);
+  outline-offset: 2px;
+}
+
+/* Шаг 2. Карточка профиля */
+.profile-card {
+  max-inline-size: 20rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: var(--gradient-accent);
+  color: hsl(0 0% 100%);
+  box-shadow: 0 0.5rem 1.5rem hsl(220 50% 10% / 0.4);
+  margin-block-end: 2rem;
+}
+.profile-card__name {
+  font-size: 1.25rem;
+  margin-block-end: 0.5rem;
+}
+.profile-card__role {
+  font-size: 0.875rem;
+  color: hsl(0 0% 100% / 0.8);
+}
+
+/* Шаг 3. Круговая диаграмма */
+.pie-chart {
+  inline-size: 12rem;
+  block-size: 12rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    hsl(210 80% 55%) 0deg 90deg,
+    hsl(150 70% 45%) 90deg 180deg,
+    hsl(45 90% 55%) 180deg 270deg,
+    hsl(0 80% 55%) 270deg 360deg
+  );
+  position: relative;
+  margin-block-end: 2rem;
+}
+.pie-chart::after {
+  content: "";
+  position: absolute;
+  inset: 25%;
+  background: var(--bg-color);
+  border-radius: 50%;
+}
+
+/* Шаг 4. Hero-блок с наложением */
+.hero {
+  min-block-size: 20rem;
+  padding: 2rem;
+  background-color: #333; /* Фоллбэк, если картинки нет */
+  background-image: var(--gradient-overlay), url("assets/photo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  color: hsl(0 0% 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 1rem;
+  margin-block-end: 2rem;
+}
+.hero__title {
+  font-size: 2.5rem;
+  margin-block-end: 0.5rem;
+}
+
+/* Переключатель темы */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
